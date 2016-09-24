@@ -26,7 +26,7 @@ public class ShoppingCart {
 		return itemList.entrySet().stream().mapToDouble(e -> e.getValue() * priceList.get(e.getKey())).sum();
 	}
 	
-	// only for testing, there is no need
+	// visible only for testing
 	Map<String, Integer> getItems() {
 		return itemList;
 	}
