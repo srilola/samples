@@ -14,12 +14,21 @@ public class ShoppingCart {
 	}
 
 	public void addItem(String item) {
-		Integer quantity = this.itemList.get(item);
-		this.itemList.put(item, quantity != null ? ++quantity : 1);
+		addItem(item, 1);
+	}
+
+	public void addItem(String item, Integer quantity) {
+		Integer currQuantity = this.itemList.get(item);
+		this.itemList.put(item, currQuantity != null ? currQuantity+quantity : quantity);
 	}
 
 	public Double getTotalCost() {
 		return itemList.entrySet().stream().mapToDouble(e -> e.getValue() * priceList.get(e.getKey())).sum();
+	}
+	
+	// visible only for testing
+	Map<String, Integer> getItems() {
+		return itemList;
 	}
 
 }
